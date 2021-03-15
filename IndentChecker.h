@@ -164,6 +164,16 @@ struct IndentMachineData {
       evalIndent(baseDepth(indentAccess, indentPastAccess));
     }
   }
+  void evalIfAfterElseIndent(bool indentAccess,
+                      bool indentPastAccess) {
+#ifdef DEBUG
+    std::cout << "evalIfAfterElse\n";
+#endif
+    if (!currWS.empty()
+        && currWS.front() == '\n') {
+      evalIndent(baseDepth(indentAccess, indentPastAccess));
+    }
+  }
   int badLineNum() {
     if (firstBad2SpaceLine == -1
         || firstBad3SpaceLine == -1
@@ -399,6 +409,7 @@ int getFirstBadIndentLine(const std::vector<Lossy::Token>& tokens,
 
     case ELSE_OPTION_S:
       if (t == Lossy::IF_T) {
+        data.evalIfAfterElseIndent(indentAccess, indentPastAccess);
         data.stack.pop();
         data.stack.push(t);
         currState = STRUCTURE_START_LINE_S;
