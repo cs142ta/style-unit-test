@@ -438,6 +438,17 @@ int getFirstBadIndentLine(const std::vector<Lossy::Token>& tokens,
         data.parenInStructureStartLineDepth = 1;
         currState = WAIT_FOR_MATCHING_PAREN_S;
       }
+      else if (t == Lossy::SEMICOLON_T) {
+        Lossy::Token closing = data.stack.top();
+        data.stack.pop();
+        if (closing == Lossy::SWITCH_T
+            || closing == Lossy::CLASS_T
+            || closing == Lossy::STRUCT_T
+            || closing == Lossy::UNION_T) {
+          data.classDepth--;
+        }
+        currState = START_S;
+      }
       break;
 
     case STRUCTURE_CLOSE_LINE_S:

@@ -16,30 +16,30 @@ void evaluate(const std::string& fileName) {
 
 
 int main(int argc, char* argv[]) {
-  /*
+
   std::string fileName = "sample.txt";
   if (argc > 1) {
     fileName = argv[1];
-  }*/
-
-  std::vector<std::string> fileNames = {
-          "main.cpp",
-          "BakedGood.h",
-          "BakedGood.cpp",
-          "Bread.h",
-          //"Bread.cpp",
-          "Cake.h",
-          "Cake.cpp",
-          "CupCake.h",
-          "CupCake.cpp",
-          "LayerCake.h",
-          "LayerCakeCake.cpp"
-  };
-
-  for (std::string fileName : fileNames) {
-    evaluate("./lab/" + fileName);
   }
+  evaluate(fileName);
+
+  // std::vector<std::string> fileNames = {
+  //         "main.cpp",
+  //         "BakedGood.h",
+  //         "BakedGood.cpp",
+  //         "Bread.h",
+  //         //"Bread.cpp",
+  //         "Cake.h",
+  //         "Cake.cpp",
+  //         "CupCake.h",
+  //         "CupCake.cpp",
+  //         "LayerCake.h",
+  //         "LayerCakeCake.cpp"
+  // };
+
+  // for (std::string fileName : fileNames) {
+  //   evaluate("./lab/" + fileName);
+  // }
 
   return 0;
 }
-
